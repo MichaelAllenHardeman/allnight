@@ -1,0 +1,77 @@
+
+.track-mode-linear {
+  color: #e8e8e8;
+}
+
+.track-mode-shuffle {
+  color: rgba(100, 65, 165, 1.0);
+}
+
+.btn-player{
+  background  : none;
+  border      : none;
+  cursor      : pointer;
+  outline     : 0px !important;
+  margin      : 0px 0px 0px 0px;
+  padding     : 0px 0px 0px 0px;
+  width       : 32px;
+  height      : 32px;
+  font-size   : 22px;
+}
+
+.btn-player:focus {
+  outline : 0px !important;
+}
+
+#controls {
+  display        : inline;
+  padding-bottom : 10px;
+}
+
+#slider {
+  display : inline;
+  width   : 200px;
+  float   : right;
+}
+
+rzslider {
+  margin-top    : 20px;
+  margin-right  :  0px;
+  margin-bottom : 15px;
+  margin-left   :  0px;
+}
+
+rzslider span.pointer {
+  background-color      : rgba(32,32,32,0);
+  top                   : -15px;
+  width                 :  32px;
+  height                :  32px;
+  cursor                : pointer;
+  -webkit-border-radius :  16px;
+     -moz-border-radius :  16px;
+          border-radius :  16px;
+}
+
+rzslider span.bar {
+  background : #e8e8e8;
+}
+
+rzslider span.pointer:after {
+  background : #e8e8e8;
+}
+
+rzslider span.pointer:hover:after {
+  background-color : #e8e8e8;
+}
+
+rzslider span.pointer.active:after {
+  background-color : #e8e8e8;
+}
+
+rzslider span.bubble {
+  color : #e8e8e8;
+}
+
+rzslider span.bubble.limit {
+  color : #e8e8e8;
+}

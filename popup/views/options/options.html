@@ -1,0 +1,16 @@
+<link rel="stylesheet" href="views/options/options.css"/>
+
+<div id="options">
+  <form>
+    <input
+      type="text"
+      id="username"
+      placeholder="{{ ::translate('optionsUsernamePlaceholder') }}"
+      data-ng-model="username"
+    />
+    <button type="button" class="btn-options" data-ng-click='saveOptions()'>
+      {{ ::translate('optionsApplyButton') }} <span class="glyphicon glyphicon-plus"></span>
+    </button>
+  </form>
+  <a data-ng-click='openOptions()'>{{ ::translate('optionsAdvancedLabel') }}</a>
+</div>

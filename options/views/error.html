@@ -1,0 +1,10 @@
+<div id="error">
+  <ul class="list-group">
+    <li ng-repeat='error in errors'>
+      <span class="icon icon-exception">{{error.message}}</span>
+    </li>
+  </ul>
+  <button type="button" class="btn-xs btn-default" data-ng-click='errors.length = 0'>
+    <span class="icon icon-clear">{{translate('errorClearButton')}}</span>
+  </button>
+</div>

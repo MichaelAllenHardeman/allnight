@@ -1,0 +1,74 @@
+<link rel="stylesheet" href="views/player/player.css"/>
+
+<div id="player">
+  
+  <div id="controls">
+    <button
+      type="button"
+      class="btn-xs btn-player"
+      data-ng-click='previous()'
+      tooltip="{{ ::translate('playerPreviousTooltip') }}"
+      tooltip-placement="top"
+      tooltip-popup-delay="500">
+      <span class="glyphicon glyphicon-step-backward"></span>
+    </button>
+    
+    <button
+      type="button"
+      class="btn-xs btn-player"
+      data-ng-click='playPause()'
+      tooltip="{{ ::translate('playerPlayPauseTooltip') }}"
+      tooltip-placement="top"
+      tooltip-popup-delay="500">
+      <span class="glyphicon glyphicon-{{ storage.player.state }}"></span>
+    </button>
+    
+    <button
+      type="button"
+      class="btn-xs btn-player"
+      data-ng-click='next()'
+      tooltip="{{ ::translate('playerNextTooltip') }}"
+      tooltip-placement="top"
+      tooltip-popup-delay="500">
+      <span class="glyphicon glyphicon-step-forward"></span>
+    </button>
+    
+    <button
+      type="button"
+      class="btn-xs btn-player"
+      data-ng-click='trackMode()'
+      tooltip="{{ ::translate('playerLinearShuffleTooltip') }}"
+      tooltip-placement="top"
+      tooltip-popup-delay="500">
+      <span class="glyphicon glyphicon-random track-mode-{{ storage.player.trackMode }}"></span>
+    </button>
+    <div
+      id="slider"
+      tooltip="{{ ::translate('playerSleepTimerTooltip') }}"
+      tooltip-placement="top"
+      tooltip-popup-delay="500">
+      <rzslider
+        rz-slider-model="storage.player.timer.minutes"
+        rz-slider-floor="storage.player.timer.floor"
+        rz-slider-ceil="storage.player.timer.ceil">
+      </rzslider>
+    </div>
+  </div>
+  
+  <div id="playlist">
+    <table class="table" data-ng-if="playlist.list.length > 0">
+      <tr>
+        <th>Stream Name </th>
+        <th>Game        </th>
+        <th>Viewer Count</th>
+      </tr>
+      <!-- <tr data-ng-repeat="stream in storage.player.list">
+        <a href="{{stream.channel.url}}" target="0">
+          <td>{{stream.channel.name}}</td>
+          <td>{{stream.game}}        </td>
+          <td>{{stream.viewers}}     </td>
+        </a>
+      </tr> -->
+    </ul>
+  </div>
+</div>

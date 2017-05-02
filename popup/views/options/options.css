@@ -1,0 +1,55 @@
+
+.btn-options {
+  background  : rgba(100, 65, 165, 1.0);
+  border      : none;
+  cursor      : pointer;
+  outline     : 0px !important;
+  margin      : 0px 0px 0px 0px;
+  padding     : 2px 2px 2px 2px;
+  font-size   : 12px;
+}
+
+.btn-options:focus {
+  outline : 0px !important;
+}
+
+#options input {
+  min-width: 250px;
+  max-width: 250px;
+}
+
+#options form {
+  display: inline-block;
+}
+
+#options a {
+  float: right;
+  color           : rgba(100, 65, 165, 1.0) !important;
+  text-decoration : none !important;
+  cursor          : pointer;
+}
+
+#options a:link {
+  color           : rgba(100, 65, 165, 1.0) !important;
+  text-decoration : none !important;
+  cursor          : pointer;
+}
+
+#options a:visited {
+  color           : rgba(100, 65, 165, 1.0) !important;
+  text-decoration : none !important;
+  cursor          : pointer;
+}
+
+#options a:hover {
+  color           : rgba(100, 65, 165, 1.0) !important;
+  text-decoration : underline !important;
+  cursor          : pointer;
+}
+
+#options a:active {
+  color           : rgba(100, 65, 165, 1.0) !important;
+  text-decoration : underline !important;
+  cursor          : pointer;
+}
+

@@ -1,0 +1,146 @@
+{
+  "name":{
+    "message"    : "AllNight",
+    "description": "Title of the browser extension"
+  },
+
+  "description":{
+    "message"    : "Ever wanted to fall asleep to Twitch like you do to your TV? This extension is for you.",
+    "description": "Description of the browser extension"
+  },
+
+  "keyword":{
+    "message"    : "allnight",
+    "description": "Keyword typed into the chrome omnibox to access the extension"
+  },
+
+  "browserActionTitle":{
+    "message"    : "AllNight - Twitch sleep timer",
+    "description": "Mouseover message for the browser button next to address bar"
+  },
+
+  "popupAboutTooltip":{
+    "message"    : "About AllNight",
+    "description": "Mouseover Message for the Logo in the Popup"
+  },
+
+  "popupOptionsTooltip":{
+    "message"    : "Options",
+    "description": "Mouseover Message for the Options Button in the Popup"
+  },
+
+  "popupWatchTooltip":{
+    "message"    : "Watch",
+    "description": "Mouseover Message for the Watch Button in the Popup"
+  },
+
+  "aboutPartOne":{
+    "message"    : "This will be the about page with donation button.",
+    "description": "First paragraph of the About View"
+  },
+
+  "aboutPartTwo":{
+    "message"    : "In the TOS for using the 'Glyphicon Pack' we need to feature",
+    "description": "Second paragraph of the About View"
+  },
+
+  "aboutPartThree":{
+    "message"    : "in a prominent part of the application. Here is probably appropriate.",
+    "description": "Third paragraph of the About View"
+  },
+
+  "aboutGlyphiconLink":{
+    "message"    : "their URL",
+    "description": "Glyphicon Link in the About View"
+  },
+
+  "playerPreviousTooltip":{
+    "message"    : "Previous",
+    "description": "Mouseover Message for the Previous Button in the Player View"
+  },
+
+  "playerPlayPauseTooltip":{
+    "message"    : "Play/Pause",
+    "description": "Mouseover Message for the Play/Pause Button in the Player View"
+  },
+
+  "playerNextTooltip":{
+    "message"    : "Next",
+    "description": "Mouseover Message for the Next Button in the Player View"
+  },
+
+  "playerLinearShuffleTooltip":{
+    "message"    : "Linear/Shuffle",
+    "description": "Mouseover Message for the Linear/Shuffle Button in the Player View"
+  },
+
+  "playerSleepTimerTooltip":{
+    "message"    : "SleepTimer (mins)",
+    "description": "Mouseover Message for the SleepTimer Slider in the Player View"
+  },
+
+  "optionsTitle":{
+    "message"     : "Advanced Options",
+    "description" : "Title for the Advanced Options Page"
+  },
+
+  "optionsDonateLabel":{
+    "message"     : "Donate",
+    "description" : "Label for the Donate Navigation Button"
+  },
+
+  "optionsApplyButton":{
+    "message"     : "Apply",
+    "description" : "Label Message for the Apply Button in the Options View"
+  },
+
+  "optionsAdvancedLabel":{
+    "message"     : "Advanced",
+    "description" : "Label Message for the Advanced Label in the Options View"
+  },
+
+  "optionsUsernamePlaceholder":{
+    "message": "Twitch Username",
+    "description" : "Placeholder Message for the Username Field in the Options View"
+  },
+
+  "optionsDefaultGamePlaceholder":{
+    "message": "Default Game",
+    "description" : "Placeholder Message for the Default Game Field in the Options View"
+  },
+
+  "optionsNameApplySuccess":{
+    "message"     : "Username successfully applied",
+    "description" : "Message flashed in the Options View if the Username Option was successfully applied"
+  },
+
+  "optionsDefaultGameApplySuccess":{
+    "message"     : "Default Game successfully applied",
+    "description" : "Message flashed in the Options View if the Default Game Option was successfully applied"
+  },
+
+  "optionsDefaultGameNotFound":{
+    "message"     : "Default Game unable to be found. Option not saved",
+    "description" : "Message flashed in the Options View if that particular option was not saved"
+  },
+
+  "optionsApplyFailureUsername":{
+    "message"     : "You must enter your Twitch Username to apply",
+    "description" : "Message flashed in the Options View if username options failed to apply"
+  },
+
+  "optionsInvalidUsername":{
+    "message"     : "The username you entered is not a Twitch User",
+    "description" : "Message flashed in the Options View if username options is not valid"
+  },
+
+  "errorClearButton":{
+    "message"    : "Clear",
+    "description": "Label Message for the Clear Button in the Error View"
+  },
+
+  "errorUnimplementedFeature":{
+    "message"    : "Unimplemented Feature",
+    "description": "Error Message if a feature is not yet implemented"
+  }
+}

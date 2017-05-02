@@ -1,0 +1,104 @@
+body {
+  color            : #e8e8e8;
+  background-color : #202020;
+}
+
+a:link {
+  color           : rgba(100, 65, 165, 1.0);
+  text-decoration : none;
+}
+
+a:visited {
+  color           : rgba(100, 65, 165, 1.0);
+  text-decoration : none;
+}
+
+a:hover {
+  color           : rgba(100, 65, 165, 1.0);
+  text-decoration : underline;
+}
+
+a:active {
+  color           : rgba(100, 65, 165, 1.0);
+  text-decoration : underline;
+}
+
+ul {
+  margin-bottom : 5px;
+}
+
+textarea, input {
+  border : 0px solid;
+}
+
+textarea:focus, input:focus {
+  outline : 0;
+}
+
+input {
+  min-width        : 250px;
+  background-color : #333333;
+}
+
+#main-divider {
+  margin-top    : 15px;
+  margin-bottom : 15px;
+  margin-right  :  0px;
+  margin-left   :  0px;
+}
+
+#banner {
+  position                : relative;
+  display                 : inline-block;
+  font-style              : normal;
+  font-weight             : normal;
+  -webkit-font-smoothing  : antialiased;
+  -moz-osx-font-smoothing : grayscale;
+}
+
+#popup {
+  min-width           : 375px;
+  width               : 375px;
+  min-height          : 10px;
+  margin              : 12px;
+  -webkit-user-select : none;
+  -moz-user-select    : none;
+  -ms-user-select     : none;
+  user-select         : none;
+}
+
+#navigation {
+  float         : right;
+  margin-top    : 0px;
+  margin-right  : 0px;
+  margin-bottom : 0px;
+  margin-left   : 0px;
+}
+
+#navigation a:link {
+  color           : #e8e8e8;
+  font-size       : 22px;
+  text-decoration : none;
+}
+
+#navigation a:visited {
+  color           : #e8e8e8;
+  font-size       : 22px;
+  text-decoration : none;
+}
+
+#navigation a:hover {
+  color           : #e8e8e8;
+  font-size       : 22px;
+  text-decoration : none;
+}
+
+#navigation a:active {
+  color           : #e8e8e8;
+  font-size       : 22px;
+  text-decoration : none;
+}
+
+#error ul {
+  margin-bottom : 5px;
+}

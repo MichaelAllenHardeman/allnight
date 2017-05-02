@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="AllNightPopup" data-ng-csp lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible">
+
+    <link rel="stylesheet" href="../lib/angular/css/angular-csp.css"/>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../lib/bootstrap/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="../lib/rzslider/css/rzslider.css"/>
+    <link rel="stylesheet" href="css/popup.css"/>
+    
+    <script src="../lib/angular/js/angular.min.js"></script>
+    <script src="../lib/angular/js/angular-route.min.js"></script>
+    <script src="../lib/angular/js/angular-resource.min.js"></script>
+    <script src="../lib/angular-ui/js/ui-bootstrap.min.js"></script>
+    <script src="../lib/rzslider/js/rzSlider.js"></script>
+    <script src="../lib/ngstorage/js/ngstorage.min.js"></script>
+    <script src="../js/constants.js"></script>
+    <script src="../js/objects.js"></script>
+    <script src="../js/ngtwitch.js"></script>
+    <script src="../js/ngerror.js"></script>
+    <script src="js/application.js"></script>
+    <script src="js/service.js"></script>
+    <script src="js/controller.js"></script>
+  </head>
+  <body id="popup">
+    <div id="header">
+      <a
+        href="#/about"
+        id="banner"
+        tooltip="{{ ::translate('popupAboutTooltip') }}"
+        tooltip-placement="bottom"
+        tooltip-popup-delay="500">
+        <img src="../images/banner/banner-white-outline-128.png"></img>
+      </a>
+      <div id="navigation">
+        <a
+          href="#/"
+          tooltip="{{ ::translate('popupWatchTooltip') }}"
+          tooltip-placement="bottom"
+          tooltip-popup-delay="500">
+          <span class="glyphicon glyphicon-eye-open"></span>
+        </a>
+        <a
+          href="#/options"
+          tooltip="{{ ::translate('popupOptionsTooltip') }}"
+          tooltip-placement="bottom"
+          tooltip-popup-delay="500">
+          <span class="glyphicon glyphicon-cog"></span>
+        </a>
+      </div>
+    </div>
+    <hr id="main-divider"/>
+    <ul id="messages" data-ng-show="messages.length > 0" class="list-unstyled" ng-controller="AlertController">
+      <alert ng-repeat="message in messages track by $index" type="{{message.type}}" close="closeAlert($index)"><span class="{{message.icon}}"></span>{{message.text}}</alert>
+    </ul>
+    <div id="content" data-ng-view>
+    </div>
+    <div id="footer">
+    </div>
+  </body>
+</html>
