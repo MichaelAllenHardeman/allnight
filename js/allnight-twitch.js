@@ -1,21 +1,14 @@
 (function(globals) {
   'use strict';
   
-  if(!angular) {
+  if (!globals.angular) {
     throw new Error('AngularJS is required for this module');
   }
   
   var MODULE_NAME = 'allnight-twitch';
-  var application = angular.module('allnight-twitch', []);
+  var application = globals.angular.module(MODULE_NAME, []);
   
-  application.factory( 'TwitchService', [
-    '$log',
-    '$resource',
-  function (
-    $log,
-    $resource
-  ) {
-  
+  application.factory( 'TwitchService', ['$log', '$resource', function ($log, $resource) {
     var publicApi = {
       'User'            : undefined,
       'Follows'         : undefined,

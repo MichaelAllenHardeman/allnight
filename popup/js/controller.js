@@ -1,11 +1,11 @@
 ﻿(function(globals) {
   'use strict';
   
-  if(!angular) {
+  if (!globals.angular) {
     throw new Error('AngularJS is required for this module');
   }
   
-  var application = angular.module(globals.constants.APPLICATION_NAME);
+  var application = globals.angular.module(globals.constants.APPLICATION_NAME);
   
   //////////////////////
   // PlayerController //

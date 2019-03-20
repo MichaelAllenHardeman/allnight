@@ -1,12 +1,12 @@
 (function(globals){
   'use strict';
 
-  if(globals.angular === undefined) {
+  if (!globals.angular) {
     throw new Error('AngularJS is required for this module');
   }
   
   var MODULE_NAME = 'allnight-error';
-  var application = angular.module(MODULE_NAME, []);
+  var application = globals.angular.module(MODULE_NAME, []);
 
   var errors = [];
 
@@ -38,24 +38,17 @@
   // ErrorService //
   //////////////////
 
-  application.factory( 'ErrorService', [
-    '$log',
-    '$rootScope',
-  function(
-    $log,
-    $rootScope
-  ) {
-
+  application.factory( 'ErrorService', ['$log', '$rootScope', function($log, $rootScope) {
     var $scope = $rootScope.$new();
     $scope.errors = errors;
 
-    $scope.watchCollection('errors', function(newValue, oldValue){
+    $scope.watchCollection('errors', function(newValue){
       if(newValue.length > 0){
-        chrome.browserAction.setBadgeText({text: '!'});
-        chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+        globals.chrome.browserAction.setBadgeText({text: '!'});
+        globals.chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
       } else {
-        chrome.browserAction.setBadgeText({text: '' });
-        chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
+        globals.chrome.browserAction.setBadgeText({text: '' });
+        globals.chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
       }
     });
 
@@ -64,7 +57,7 @@
       remove : remove,
       clear  : clear,
       get    : get
-    }
+    };
   }]);
   
   ///////////////////

@@ -1,17 +1,13 @@
 (function(globals){
   'use strict';
   
-  if(globals.angular === undefined) {
+  if (!globals.angular) {
     throw new Error('AngularJS is required for this module');
   }
 
-  var application = angular.module('allnight-objects', []);
+  var application = globals.angular.module('allnight-objects', []);
 
   application.factory( 'ObjectService', [ function() {
-
-    var Port = (function(){
-      this.instance = function(name);
-    });
 
     var Event = {
       ChangeUsername : function(username){
@@ -37,7 +33,7 @@
         if(!item.hasOwnProperty('message')){ return false; }
         return true;
       }
-    }
+    };
 
     var Message = {
       Success : function(text){
@@ -67,13 +63,13 @@
         if(!item.hasOwnProperty('icon')){ return false; }
         return true;
       }
-    }
+    };
 
     var Timer = function(minutes, floor, ceil){
       this.minutes = (typeof(minutes) == 'number') ? minutes : 0;
       this.floor   = (typeof(floor)   == 'number') ? floor   : 0;
       this.ceil    = (typeof(ceil)    == 'number') ? ceil    : 0;
-    }
+    };
 
     var Player = (function(){
 
@@ -102,7 +98,7 @@
             return keys;
           }
         }
-        function generateList(userSnapShot, generalSnapShot){
+        function generateList(){ // TODO: args userSnapShot, generalSnapShot
           var output = [];
           return output;
         }
@@ -143,7 +139,7 @@
         if(!item.hasOwnProperty('previous'))  { return false; }
         if(!item.hasOwnProperty('shuffle'))   { return false; }
         return true;
-      }
+      };
 
       var playing  = false;
       var shuffle  = false;
@@ -158,23 +154,23 @@
         };
         this.previous = function(){
           if(playing){
+            /*
             if(shuffle){
-
+              
             } else {
-
+              console.log('previous');
             }
+            */
           }
         };
-        this.play = function(){
-          
+        this.play = function() {
         };
         this.next = function(){
-
         };
         this.shuffle = function(){
           shuffle = !shuffle;
         };
-        this.timer = function(newValue){
+        this.timer = function(){ // TODO: arg newValue
 
         };
         this.getPlaylist = function(){
@@ -186,7 +182,7 @@
           }
           return output;
         };
-      }
+      };
     }());
     Player.isPlayer = function(item){
       if(typeof(item) !== 'object')          { return false; }
@@ -199,14 +195,13 @@
       if(!item.hasOwnProperty('timer'))      { return false; }
       if(!item.hasOwnProperty('getPlaylist')){ return false; }
       return true;
-    }
+    };
 
     return {
-      Port    : Port,
       Event   : Event,
       Message : Message,
       Timer   : Timer,
       Player  : Player
-    }
+    };
   }]);
 }(this));
