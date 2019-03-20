@@ -19,7 +19,6 @@
     'ngStorage',
     'allnight-twitch',
     'allnight-error'
-    'allnight-alert'
   ]);
   
   ///////////////
