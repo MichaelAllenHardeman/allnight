@@ -1,82 +1,82 @@
-(function(globals){
+(function (globals) {
   'use strict';
 
-  if(globals.angular === undefined) {
-    throw new Error('AngularJS is required for this module');
+  if (!globals.angular) {
+    throw new Error ('AngularJS is required for this module');
   }
-  
-  var MODULE_NAME = 'allnight-error';
-  var application = angular.module(MODULE_NAME, []);
+
+  var application = globals.angular.module ('allnight-error', []);
 
   var errors = [];
 
-  function add(error){
-    if(error instanceof Error){
-      errors.push( error );
+  function add (error) {
+    if (error instanceof Error) {
+      errors.push (error);
     } else {
-      errors.push(new TypeError('expected: Error. actual: '+error.name));
+      errors.push (new TypeError ('expected: Error. actual: ' + error.name));
     }
   }
 
-  function remove(index){
-    if(index in errors){
+  function remove (index) {
+    if (index in errors) {
       errors.splice(index, 1);
     } else {
-      errors.push(new RangeError('index not in errors.'));
+      errors.push (new RangeError ('index not in errors.'));
     }
   }
 
-  function clear(){
+  function clear () {
     errors.length = 0;
   }
 
-  function get(){
-    return errors.slice(0);
+  function get () {
+    return errors.slice (0);
   }
 
   //////////////////
   // ErrorService //
   //////////////////
 
-  application.factory( 'ErrorService', [
-    '$log',
-    '$rootScope',
-  function(
-    $log,
-    $rootScope
-  ) {
-
-    var $scope = $rootScope.$new();
+  application.factory('ErrorService', ['$log', '$rootScope', function ($log, $rootScope) {
+    var $scope = $rootScope.$new ();
     $scope.errors = errors;
 
-    $scope.watchCollection('errors', function(newValue, oldValue){
-      if(newValue.length > 0){
-        chrome.browserAction.setBadgeText({text: '!'});
-        chrome.browserAction.setBadgeBackgroundColor({ color: [255, 0, 0, 255] });
+    $scope.watchCollection ('errors', function (newValue) {
+      if (newValue.length > 0) {
+        globals.chrome.browserAction.setBadgeText ({
+          text: '!'
+        });
+        globals.chrome.browserAction.setBadgeBackgroundColor ({
+          color: [255, 0, 0, 255]
+        });
       } else {
-        chrome.browserAction.setBadgeText({text: '' });
-        chrome.browserAction.setBadgeBackgroundColor({ color: [0, 0, 0, 0] });
+        globals.chrome.browserAction.setBadgeText ({
+          text: ''
+        });
+        globals.chrome.browserAction.setBadgeBackgroundColor ({
+          color: [0, 0, 0, 0]
+        });
       }
     });
 
     return {
-      add    : add,
-      remove : remove,
-      clear  : clear,
-      get    : get
-    }
+      add   : add,
+      remove: remove,
+      clear : clear,
+      get   : get
+    };
   }]);
-  
+
   ///////////////////
   // Error Handler //
   ///////////////////
-  application.config([ '$provide', function($provide) {
-    $provide.decorator('$exceptionHandler', [ '$delegate', function($delegate) {
-      return function(exception, cause) {
-        $delegate(exception, cause);
-        add(exception);
+  application.config (['$provide', function ($provide) {
+    $provide.decorator ('$exceptionHandler', ['$delegate', function ($delegate) {
+      return function (exception, cause) {
+        $delegate (exception, cause);
+        add (exception);
       };
     }]);
   }]);
-  
+
 }(this));
