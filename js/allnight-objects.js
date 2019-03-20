@@ -10,26 +10,41 @@
   application.service ('ObjectService', [function () {
 
     var Event = {
+      'Type': {
+        'ChangeUsername': 'ChangeUsername',
+        'Previous': 'Previous',
+        'PlayPause': 'PlayPause',
+        'Next': 'Next',
+        'ChangeTrackMode': 'ChangeTrackMode',
+        'InvlidUsername': 'InvlidUsername'
+      },
       'ChangeUsername': function (username) {
+        this.type    = 'ChangeUsername';
         this.message = username;
       },
       'Previous': function () {
+        this.type    = 'Previous';
         this.message = null;
       },
       'PlayPause': function () {
+        this.type    = 'PlayPause';
         this.message = null;
       },
       'Next': function () {
+        this.type    = 'Next';
         this.message = null;
       },
       'ChangeTrackMode': function () {
+        this.type    = 'ChangeTrackMode';
         this.message = null;
       },
       'InvlidUsername': function (message) {
+        this.type    = 'InvlidUsername';
         this.message = message;
       },
       'isEvent': function (item) {
         if (typeof (item) !== 'object')       { return false; }
+        if (!item.hasOwnProperty ('type'))    { return false; }
         if (!item.hasOwnProperty ('message')) { return false; }
         return true;
       }

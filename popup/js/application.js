@@ -18,6 +18,7 @@
     'rzModule',
     'ngStorage',
     'allnight-twitch',
+    'allnight-objects',
     'allnight-error'
   ]);
   
@@ -39,10 +40,12 @@
     '$rootScope',
     '$localStorage',
     '$log',
-  function(
+    'ObjectService',
+  function (
     $rootScope,
     $localStorage,
-    $log
+    $log,
+    ObjectService
   ) {
     var DEFAULT_STATE      = globals.constants.PLAYER_STATE.PAUSED;
     var DEFAULT_TRACK_MODE = globals.constants.PLAYER_TRACK_MODE.LINEAR;
@@ -59,22 +62,22 @@
         playlist  : DEFAULT_PLAYLIST
       }
     });
-    $rootScope.translate = chrome.i18n.getMessage;
+    $rootScope.translate = globals.chrome.i18n.getMessage;
     $rootScope.openOptions = function(){
-      chrome.tabs.create({
-        url:chrome.extension.getURL('options/index.html')
+      globals.chrome.tabs.create({
+        url:globals.chrome.extension.getURL('options/index.html')
       });
     }
     
     $rootScope.messages = [];
     
-    $rootScope.port = chrome.runtime.connect({name: globals.constants.APPLICATION_NAME});
+    $rootScope.port = globals.chrome.runtime.connect({name: globals.constants.APPLICATION_NAME});
     $rootScope.port.onMessage.addListener(function(messages) {
       if(!Array.isArray(messages)){
         $log.warn('Messages is not an array.');
       } else {
         for(var i=0; i<messages.length; i++){
-          if(!(messages[i] instanceof globals.objects.Message)){
+          if(!(ObjectService.Message.isMessage(messages[i]))){
             var message = messages.splice(i,1);
             i--;
             $log.warn('Message improperly formatted: ');

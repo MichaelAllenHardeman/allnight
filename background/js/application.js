@@ -113,38 +113,27 @@
       // onMessage //
       ///////////////
       port.onMessage.addListener(function(event) {
-        console.log(event.prototype);
-        console.log(event.prototype === globals.objects.Event.prototype);
-
-        if(!(event instanceof globals.objects.Event)){
+        if(!(ObjectService.Event.isEvent(event))){
           $log.warn('Improper message format.');
           $log.warn(event);
         } else {
           switch(event.type){
-            /////////////////////////////////////////
-            case globals.objects.Event.Type.USERNAME:
-            /////////////////////////////////////////
-              if(typeof(event.body) === 'string'){
-                $rootScope.checkAndUpdateUsername(event.body, true);
-              } else {
-                $log.warn('Username is not string.');
-              }
+
+            case ObjectService.Event.Type.ChangeUsername:
+              $rootScope.checkAndUpdateUsername(event.message, true);
               break;
             
-            /////////////////////////////////////////
-            case globals.objects.Event.Type.PREVIOUS:
-            /////////////////////////////////////////
+            case ObjectService.Event.Type.Previous:
               $rootScope.messages.push(
-                new globals.objects.Message(
-                  globals.objects.Message.Type.DANGER,
-                  chrome.i18n.getMessage('errorUnimplementedFeature')
+                new ObjectService.Message.Danger(
+                  globals.chrome.i18n.getMessage(
+                    'errorUnimplementedFeature'
+                  )
                 )
               );
               break;
             
-            ///////////////////////////////////////////
-            case globals.objects.Event.Type.PLAY_PAUSE:
-            ///////////////////////////////////////////
+            case ObjectService.Event.Type.PlayPause:
               if($rootScope.storage.player.state === globals.constants.PLAYER_STATE.PAUSED){
                 $rootScope.storage.player.state = globals.constants.PLAYER_STATE.PLAYING;
               } else {
@@ -152,20 +141,17 @@
               }
               break;
             
-            /////////////////////////////////////
-            case globals.objects.Event.Type.NEXT:
-            /////////////////////////////////////
+            case ObjectService.Event.Type.Next:
               $rootScope.messages.push(
-                new globals.objects.Message(
-                  globals.objects.Message.Type.DANGER,
-                  chrome.i18n.getMessage('errorUnimplementedFeature')
+                new ObjectService.Message.Danger(
+                  globals.chrome.i18n.getMessage(
+                    'errorUnimplementedFeature'
+                  )
                 )
               );
               break;
             
-            ///////////////////////////////////////////
-            case globals.objects.Event.Type.TRACK_MODE:
-            ///////////////////////////////////////////
+            case ObjectService.Event.Type.TrackMode:
               if($rootScope.storage.player.trackMode === globals.constants.PLAYER_TRACK_MODE.LINEAR){
                 $rootScope.storage.player.trackMode = globals.constants.PLAYER_TRACK_MODE.SHUFFLE;
               } else {
@@ -173,9 +159,7 @@
               }
               break;
             
-            ////////
             default:
-            ////////
               $log.warn('Unknown event type: ' + event.type);
               break;
           }

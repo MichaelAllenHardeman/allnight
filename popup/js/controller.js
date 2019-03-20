@@ -16,12 +16,14 @@
     '$location',
     '$localStorage',
     'TwitchService',
+    'ObjectService',
   function (
     $scope,
     $log,
     $location,
     $localStorage,
-    TwitchService
+    TwitchService,
+    ObjectService
   ) {
     
     var DEFAULT_STATE      = globals.constants.PLAYER_STATE.PAUSED;
@@ -48,10 +50,7 @@
     //////////////
     $scope.previous = function() {
       $scope.port.postMessage(
-        new globals.objects.Event(
-          globals.objects.Event.Type.PREVIOUS,
-          null
-        )
+        new ObjectService.Event.Previous ()
       );
     };
     
@@ -60,10 +59,7 @@
     ///////////////
     $scope.playPause = function() {
       $scope.port.postMessage(
-        new globals.objects.Event(
-          globals.objects.Event.Type.PLAY_PAUSE,
-          null
-        )
+        new ObjectService.Event.PlayPause ()
       );
     };
     
@@ -73,8 +69,7 @@
     $scope.next = function() {
       $scope.port.postMessage(
         new globals.objects.Event(
-          globals.objects.Event.Type.NEXT,
-          null
+          new ObjectService.Event.Next ()
         )
       );
     };
@@ -84,10 +79,7 @@
     ///////////////
     $scope.trackMode = function() {
       $scope.port.postMessage(
-        new globals.objects.Event(
-          globals.objects.Event.Type.TRACK_MODE,
-          null
-        )
+        new ObjectService.Event.TrackMode ()
       );
     };
   }]);
@@ -100,12 +92,14 @@
     '$log',
     '$location',
     '$localStorage',
+    'ObjectService',
     'TwitchService',
   function (
     $scope,
     $log,
     $location,
     $localStorage,
+    ObjectService,
     TwitchService
   ) {
     $scope.storage  = $localStorage.$default({
@@ -117,16 +111,14 @@
       $scope.messages.length = 0;
       if($scope.username){
         $scope.port.postMessage(
-          new globals.objects.Event(
-            globals.objects.Event.Type.USERNAME,
-            $scope.username
-          )
+          new ObjectService.Event.ChangeUsername ($scope.username)
         );
       } else {
         $scope.messages.push(
-          new globals.objects.Message(
-            globals.objects.Message.Type.WARNING,
-            chrome.i18n.getMessage('optionsApplyFailureUsername')
+          new ObjectService.Message.Warning (
+            globals.chrome.i18n.getMessage(
+              'optionsApplyFailureUsername'
+            )
           )
         );
       }
